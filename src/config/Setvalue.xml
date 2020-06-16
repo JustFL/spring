@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 设值注入 需要有无参的构造方法和setter方法-->
+    <!-- Scope属性:
+		singleton:单例
+		prototype:多例
+		request:一次请求
+		session:一次会话
+		默认是单例模式
+     -->
+    <bean id="wheel" class="entity.Wheel">
+    	<property name="brand" value="Michelin"></property>
+    </bean>
+	<bean id="car" class="entity.Car" scope="singleton" init-method="init" destroy-method="destory">
+		<property name="mileage" value="1000"></property>
+		<property name="wheels" ref="wheel"></property>
+		<!-- 其他类型的注入格式 -->
+		<property name="arrData">
+			<array>
+				<value>"aa"</value>
+				<value>"bb"</value>
+			</array>
+		</property>
+		<property name="listData">
+			<list>
+				<value>"cc"</value>
+				<value>"dd"</value>
+			</list>
+		</property>
+		<property name="setData">
+			<set>
+				<value>"ee"</value>
+				<value>"ff"</value>
+			</set>
+		</property>
+		<property name="mapData">
+			<map>
+				<entry>
+					<key>
+						<value>"gg"</value>
+					</key>
+					<value>1</value>
+				</entry>
+				<entry>
+					<key>
+						<value>"hh"</value>
+					</key>
+					<value>2</value>
+				</entry>
+			</map>
+		</property>
+		<property name="pros">
+			<props>
+				<prop key="url">www.baidu.com</prop>
+				<prop key="user">admin</prop>
+			</props>
+		</property>
+	</bean>   
+</beans>

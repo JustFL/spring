@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+        
+	<bean id="star" class="entity.Star"></bean>
+	<bean id="agent" class="entity.Agent"></bean>
+	<aop:config>
+		<!-- 返回值 包名.类名.方法名(参数类型) -->
+		<aop:pointcut expression="execution(* entity.*.*(..))" id="functions"/>
+		<aop:aspect ref="agent">
+			<!-- 前置织入 -->
+			<aop:before method="before" pointcut-ref="functions"/>
+			<!-- 后置织入 -->
+			<aop:after-returning method="after" pointcut-ref="functions"/>
+			<!-- 异常织入 -->
+			<aop:after-throwing method="throwing" pointcut-ref="functions"/>
+			<!-- 最终织入 -->
+			<aop:after method="springAfter" pointcut-ref="functions"/>
+			<!-- 环绕织入 -->
+		</aop:aspect>
+	</aop:config> 
+</beans>

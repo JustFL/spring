@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byType"><!-- 全局自动注入 -->
+        
+        
+	<bean id="wheel" class="entity.Wheel">
+		<property name="brand" value="douyin"></property>
+	</bean>
+	<!-- byType扫描上下文 寻找与属性的类型一致的对象进行注入 
+	找到一个注入成功 
+	找不到不注入 
+	找到多个 提示错误 -->
+	<!-- byName扫描上下文 寻找与属性名称和bean的id一致的 进行注入 -->
+	<bean id="car" class="entity.Car" autowire="byType"></bean> 
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--构造器注入 需要有有参数的构造方法 -->
+    <bean id="wheel" class="entity.Wheel">
+    	<constructor-arg name="brand" value="EFFICIENTGRIP"></constructor-arg>
+    </bean>
+	<bean id="car" class="entity.Car">
+		<constructor-arg name="mileage" value="5000"></constructor-arg>
+		<constructor-arg name="wheels" ref="wheel"></constructor-arg>
+	</bean>   
+</beans>

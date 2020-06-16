@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+<!-- 使用标签进行对象创建和依赖注入 需要添加context命名空间
+常用的标签有
+@Component 组件标签修饰类 表示创建该类的对象 相当于<bean id="xx" class="xx"></bean>
+@Repository 与@Component相同 表示创建持久层对象
+@Service 与@Component相同 表示创建业务逻辑层对象
+@Controller 与@Component相同 表示创建表述层对象
+@Autowired 可以修饰属性 也可以修饰方法 表示按照类型实现自动装配
+按照名称进行自动装配的两种方式
+1>
+@Autowired
+@Qualifier("name")
+2>
+@Resource(name="")
+-->
+        
+        <!-- 扫描组件自动注册为spring bean 路径为包的名字 -->
+      <context:component-scan base-package="entity"></context:component-scan>  
+        
+        
+</beans>
+        
